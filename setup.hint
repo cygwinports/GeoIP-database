@@ -1,0 +1,5 @@
+category: Net
+requires:
+sdesc: "GeoIP Lite (free) databases"
+ldesc: "The free GeoLite databases are similar to the commercial GeoIP 
+databases, but are slightly less accurate."
