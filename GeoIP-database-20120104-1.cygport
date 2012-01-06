@@ -4,8 +4,10 @@ DESCRIPTION="GeoIP free databases"
 HOMEPAGE="http://www.maxmind.com/"
 SRC_URI="mirror://_geoip/database/GeoIPv6.dat.gz
 	 mirror://_geoip/database/GeoLiteCity.dat.gz
+	 mirror://_geoip/database/GeoLiteCityv6-beta/GeoLiteCityv6.dat.gz
 	 mirror://_geoip/database/GeoLiteCountry/GeoIP.dat.gz
 	 mirror://_geoip/database/asnum/GeoIPASNum.dat.gz
+	 mirror://_geoip/database/asnum/GeoIPASNumv6.dat.gz
 	 mirror://_geoip/database/LICENSE.txt"
 SRC_DIR=.
 
@@ -14,6 +16,7 @@ src_compile() { :; }
 src_install() {
 	cd ${S}
 	insinto /usr/share/GeoIP
-	doins GeoIP*.dat
-	newins GeoLiteCity.dat GeoIPCity.dat
+	doins *.dat
+	dosym GeoLiteCity.dat /usr/share/GeoIP/GeoIPCity.dat
+	dosym GeoLiteCityv6.dat /usr/share/GeoIP/GeoIPCityv6.dat
 }
