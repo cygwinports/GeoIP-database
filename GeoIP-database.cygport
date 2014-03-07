@@ -1,5 +1,5 @@
 NAME="GeoIP-database"
-VERSION=20130514
+VERSION=20140305
 RELEASE=1
 CATEGORY="Net"
 SUMMARY="GeoIP Lite (free) databases"
@@ -14,6 +14,8 @@ SRC_URI="http://geolite.maxmind.com/download/geoip/database/GeoIPv6.dat.gz
 	 http://geolite.maxmind.com/download/geoip/database/asnum/GeoIPASNumv6.dat.gz
 	 http://geolite.maxmind.com/download/geoip/database/LICENSE.txt"
 SRC_DIR=.
+
+ARCH=noarch
 
 src_compile() { :; }
 
