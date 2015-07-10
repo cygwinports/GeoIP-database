@@ -1,11 +1,11 @@
 NAME="GeoIP-database"
-VERSION=20150106
+VERSION=20150707
 RELEASE=1
 CATEGORY="Net"
 SUMMARY="GeoIP Lite (free) databases"
 DESCRIPTION="The free GeoLite databases are similar to the commercial GeoIP
 databases, but are slightly less accurate."
-HOMEPAGE="http://www.maxmind.com/"
+HOMEPAGE="https://dev.maxmind.com/geoip/legacy/geolite/"
 SRC_URI="http://geolite.maxmind.com/download/geoip/database/GeoIPv6.dat.gz
 	 http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz
 	 http://geolite.maxmind.com/download/geoip/database/GeoLiteCityv6-beta/GeoLiteCityv6.dat.gz
