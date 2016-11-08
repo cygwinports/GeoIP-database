@@ -1,6 +1,6 @@
 NAME="GeoIP-database"
 VERSION=20161101
-RELEASE=1
+RELEASE=2
 CATEGORY="Net"
 SUMMARY="GeoIP Lite (free) databases"
 DESCRIPTION="GeoIP is an API that enables the user to find geographical and
@@ -21,9 +21,33 @@ ARCH=noarch
 src_compile() { :; }
 
 src_install() {
+	local dbdir="/usr/share/GeoIP"
+
 	cd ${S}
-	insinto /usr/share/GeoIP
-	doins *.dat
-	dosym GeoLiteCity.dat /usr/share/GeoIP/GeoIPCity.dat
-	dosym GeoLiteCityv6.dat /usr/share/GeoIP/GeoIPCityv6.dat
+	insinto ${dbdir}
+	doins GeoIPv6.dat GeoLiteCity{,v6}.dat
+	newins GeoIP.dat GeoLiteCountry.dat
+	newins GeoIPASNum.dat GeoLiteASNum.dat
+	newins GeoIPASNumv6.dat GeoLiteASNumv6.dat
+
+	dodir /etc/postinstall /etc/preremove
+	cat > ${D}/etc/postinstall/${NAME}.sh <<_EOF
+for f in ${dbdir}/*.dat; do
+    case \${f##*/} in
+    GeoLiteCountry.dat)
+        [ -e GeoIP.dat ] || /bin/ln -s \${f##*/} ${dbdir}/GeoIP.dat
+        ;;
+    GeoLite*.dat)
+        [ -e \${f/Lite/IP} ] || /bin/ln -s \${f##*/} \${f/Lite/IP}
+        ;;
+    esac
+done
+_EOF
+	cat > ${D}/etc/preremove/${NAME}.sh <<_EOF
+for f in \$(/usr/bin/find ${dbdir} -type l); do
+    case \$(readlink \${f}) in
+    GeoLite*.dat) rm \${f} ;;
+    esac
+done
+_EOF
 }
