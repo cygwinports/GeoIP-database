@@ -35,7 +35,7 @@ src_install() {
 for f in ${dbdir}/*.dat; do
     case \${f##*/} in
     GeoLiteCountry.dat)
-        [ -e GeoIP.dat ] || /bin/ln -s \${f##*/} ${dbdir}/GeoIP.dat
+        [ -e ${dbdir}/GeoIP.dat ] || /bin/ln -s \${f##*/} ${dbdir}/GeoIP.dat
         ;;
     GeoLite*.dat)
         [ -e \${f/Lite/IP} ] || /bin/ln -s \${f##*/} \${f/Lite/IP}
