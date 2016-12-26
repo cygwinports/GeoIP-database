@@ -1,6 +1,6 @@
 NAME="GeoIP-database"
-VERSION=20161101
-RELEASE=2
+VERSION=20161207
+RELEASE=1
 CATEGORY="Net"
 SUMMARY="GeoIP Lite (free) databases"
 DESCRIPTION="GeoIP is an API that enables the user to find geographical and
