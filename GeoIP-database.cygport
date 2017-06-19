@@ -1,5 +1,5 @@
 NAME="GeoIP-database"
-VERSION=20170121
+VERSION=20170617
 RELEASE=1
 CATEGORY="Net"
 SUMMARY="GeoIP Lite (free) databases"
